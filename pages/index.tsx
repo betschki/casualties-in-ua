@@ -25,7 +25,7 @@ const H1 = styled.h1`
   color: #fff;
   @media (max-width: 768px) {
     margin: 1.5em 0 0;
-    font-size: 36px;
+    font-size: 32px;
     letter-spacing: 0;
   }
 `;
