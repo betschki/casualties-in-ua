@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+  box-sizing: border-box;
+  color: #2c3e50;
+  font-family: "Work Sans";
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -2px;
+  margin: 0;
+}
