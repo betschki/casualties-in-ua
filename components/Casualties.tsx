@@ -31,6 +31,10 @@ const Heading = styled.p`
     font-weight: 800;
     color: #2c3e50;
   }
+
+  @media (max-width: 768px) {
+    font-size: 25px;
+  }
 `;
 
 const Disclaimer = styled.p`
