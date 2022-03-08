@@ -34,7 +34,7 @@ const H1 = styled.h1`
     font-size: 32px;
     letter-spacing: 0;
   }
-  @media (min-width: 1080px) and (max-width: 1080px) {
+  @media (min-width: 1080px) and (max-width: 1081px) {
     font-size: 96px;
     text-align: left;
     margin: 0.5em 0 0;
