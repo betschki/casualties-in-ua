@@ -49,7 +49,8 @@ export default function Casualties(props: CasualtiesInterface) {
         Source:{" "}
         <a href={props.casualties.total.source} target="_blank">
           OHCHR
-        </a>
+        </a>{" "}
+        / <a href="https://casualties.in.ua">casualties.in.ua</a>
       </Source>
     </>
   );
