@@ -8,7 +8,6 @@ import { exportStory } from "./api/export";
 
 const Main = styled.main`
   align-items: center;
-  align-content: center;
   background: linear-gradient(0deg, #f1c40f 50%, #2980b9 50%);
   background-size: cover;
   min-height: 100vh;
@@ -16,33 +15,36 @@ const Main = styled.main`
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: center;
-  text-align: center;
-`;
-
-const FlexChild = styled.div`
-  display: flex;
-  align-items: center;
-  flex-grow: 1;
-  flex-shrink: 0;
-  flex-basis: auto;
 `;
 
 const H1 = styled.h1`
   color: #fff;
+  margin-bottom: 2em;
   @media (max-width: 768px) {
-    margin: 1.5em 0 0;
-    font-size: 32px;
     letter-spacing: 0;
   }
   @media (min-width: 1080px) and (max-width: 1081px) {
     font-size: 96px;
     text-align: left;
-    margin: 0.5em 0 0;
   }
 `;
 
 const Yellow = styled.span`
   color: #f1c40f;
+`;
+
+const DownloadSection = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Button = styled.button`
+  height: 4em;
+  text-align: center;
+  border: none;
+  font-size: 18px;
+  background: #2c3e50;
+  color: #fff;
 `;
 
 function daysSinceInvasion(): number {
@@ -99,30 +101,28 @@ export default function Home(props: CasualtiesInterface) {
   return (
     <>
       <Main ref={exportRef}>
-        <FlexChild>
-          <Container>
-            <H1>
-              Russia's unprovoked invasion against Ukraine is going on for{" "}
-              <Yellow>{daysSinceInvasion()}</Yellow> days
-            </H1>
-          </Container>
-        </FlexChild>
-        <FlexChild>
-          <Container>
-            <Casualties casualties={props.casualties} />
-          </Container>
-        </FlexChild>
+        <Container>
+          <H1>
+            Russia's unprovoked invasion against Ukraine is going on for{" "}
+            <Yellow>{daysSinceInvasion()}</Yellow> days
+          </H1>
+        </Container>
+        <Container>
+          <Casualties casualties={props.casualties}></Casualties>
+        </Container>
       </Main>
-      <button
-        onClick={() =>
-          exportStory(
-            exportRef.current,
-            `casualties-in-ua_${moment().format("YYYY-MM-DD")}`
-          )
-        }
-      >
-        Capture Image
-      </button>
+      <DownloadSection>
+        <Button
+          onClick={() =>
+            exportStory(
+              exportRef.current,
+              `casualties-in-ua_${moment().format("YYYY-MM-DD")}`
+            )
+          }
+        >
+          Click to download for Instagram Story
+        </Button>
+      </DownloadSection>
     </>
   );
 }
