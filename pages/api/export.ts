@@ -10,7 +10,7 @@ export const exportStory = async (element: any, imageFileName: string) => {
     windowHeight: 1920,
     scale: 1,
   });
-  const image = canvas.toDataURL("image/jpg", 1.0);
+  const image = canvas.toDataURL("image/jpeg", 1.0);
   downloadImage(image, imageFileName);
 };
 

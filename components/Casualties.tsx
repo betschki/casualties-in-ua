@@ -8,7 +8,7 @@ const Card = styled.div`
   padding: 12px 24px;
   margin: 4em auto 0 auto;
   max-width: 80%;
-  @media (min-width: 1080px) and (max-width: 1080px) {
+  @media (min-width: 1080px) and (max-width: 1081px) {
     max-width: 100%;
     padding: 4.5em 4em;
     text-align: left;
@@ -20,7 +20,7 @@ const Card = styled.div`
 const Heading = styled.p`
   font-size: 24px;
   font-weight: 600;
-  @media (min-width: 1080px) and (max-width: 1080px) {
+  @media (min-width: 1080px) and (max-width: 1081px) {
     font-size: 54px;
     font-weight: 800;
     color: #2c3e50;
@@ -29,7 +29,7 @@ const Heading = styled.p`
 `;
 
 const Disclaimer = styled.p`
-  @media (min-width: 1080px) and (max-width: 1080px) {
+  @media (min-width: 1080px) and (max-width: 1081px) {
     font-size: 38px;
   }
 `;
@@ -44,7 +44,7 @@ const Source = styled.p`
   a {
     color: #fff;
   }
-  @media (min-width: 1080px) and (max-width: 1080px) {
+  @media (min-width: 1080px) and (max-width: 1081px) {
     font-size: 32px;
     text-align: left;
     color: #2c3e50;
