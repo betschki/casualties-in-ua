@@ -7,12 +7,29 @@ const Card = styled.div`
   border-radius: 5px;
   padding: 12px 24px;
   margin: 4em auto 0 auto;
-  max-width: 70%;
+  max-width: 80%;
+  @media (min-width: 1080px) and (max-width: 1080px) {
+    background: transparent;
+    max-width: 100%;
+    padding: 0;
+    text-align: left;
+  }
 `;
 
 const Heading = styled.p`
   font-size: 24px;
   font-weight: 600;
+  @media (min-width: 1080px) and (max-width: 1080px) {
+    font-size: 54px;
+    font-weight: 800;
+    color: #2c3e50;
+  }
+`;
+
+const Disclaimer = styled.p`
+  @media (min-width: 1080px) and (max-width: 1080px) {
+    font-size: 38px;
+  }
 `;
 
 const Emphasize = styled.span`
@@ -24,6 +41,14 @@ const Source = styled.p`
   color: #fff;
   a {
     color: #fff;
+  }
+  @media (min-width: 1080px) and (max-width: 1080px) {
+    font-size: 32px;
+    text-align: left;
+    color: #2c3e50;
+    a {
+      color: #2c3e50;
+    }
   }
 `;
 
@@ -38,12 +63,12 @@ export default function Casualties(props: CasualtiesInterface) {
           civilians, bringing the total number of civilian casualties to{" "}
           <Emphasize>{props.casualties.total.value}</Emphasize>.
         </Heading>
-        <p>
+        <Disclaimer>
           These numbers represent UN-confirmed casualties as of{" "}
           {moment(props.casualties.total.date).format("DD MMMM YYYY")}. The real
           figures might be considerably higher, as many reports are still
           pending corroboration from the United Nations.
-        </p>
+        </Disclaimer>
       </Card>
       <Source>
         Source:{" "}
