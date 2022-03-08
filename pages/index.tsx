@@ -47,26 +47,36 @@ export async function getStaticProps() {
   );
   const data = await res.json();
   const filtered = data.filter((item: any) => item.name === "Ukraine");
+  const total = filtered[0].figures.filter(
+    (item: any) =>
+      item.name === "Civilian Casualties since 24 Feb 2022 (killed & injured)"
+  );
+  const injured = filtered[0].figures.filter(
+    (item: any) => item.name === "Civilians Injured since 24 Feb 2022"
+  );
+  const deaths = filtered[0].figures.filter(
+    (item: any) => item.name === "Civilians Killed since 24 Feb 2022"
+  );
+
+  console.log(total);
 
   const casualties = {
     total: {
-      date: filtered[0].figures[7].values[0].date,
-      value: filtered[0].figures[7].values[0].value,
-      source: filtered[0].figures[7].values[0].url,
+      date: total[0].date,
+      value: total[0].value,
+      source: total[0].url,
     },
     injured: {
-      date: filtered[0].figures[9].values[0].date,
-      value: filtered[0].figures[9].values[0].value,
-      source: filtered[0].figures[9].values[0].url,
+      date: injured[0].date,
+      value: injured[0].value,
+      source: injured[0].url,
     },
     deaths: {
-      date: filtered[0].figures[8].values[0].date,
-      value: filtered[0].figures[8].values[0].value,
-      source: filtered[0].figures[8].values[0].url,
+      date: deaths[0].date,
+      value: deaths[0].value,
+      source: deaths[0].url,
     },
   };
-
-  console.log(casualties);
 
   return {
     props: { casualties },
