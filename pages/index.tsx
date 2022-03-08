@@ -1,11 +1,14 @@
+import { useRef } from "react";
 import styled from "styled-components";
 import Casualties from "../components/Casualties";
 import Container from "../components/Container";
 import { CasualtiesInterface } from "../types/Casualties.interface";
+import { exportStory } from "./api/export";
 
 const Header = styled.header`
   align-items: center;
   align-content: center;
+  aspect-ratio: 9/16;
   background: linear-gradient(
       0deg,
       rgba(0, 0, 0, 0.9) 0%,
@@ -58,8 +61,6 @@ export async function getStaticProps() {
     (item: any) => item.name === "Civilians Killed since 24 Feb 2022"
   );
 
-  console.log(total);
-
   const casualties = {
     total: {
       date: total[0].date,
@@ -85,9 +86,11 @@ export async function getStaticProps() {
 }
 
 export default function Home(props: CasualtiesInterface) {
+  const exportRef = useRef<any>();
+
   return (
     <>
-      <Header>
+      <Header ref={exportRef}>
         <Container>
           <H1>
             Russia's unprovoked invasion against Ukraine is going on for{" "}
@@ -96,6 +99,9 @@ export default function Home(props: CasualtiesInterface) {
         </Container>
         <Casualties casualties={props.casualties} />
       </Header>
+      <button onClick={() => exportStory(exportRef.current, "test")}>
+        Capture Image
+      </button>
     </>
   );
 }
