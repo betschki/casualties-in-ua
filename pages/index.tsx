@@ -22,6 +22,8 @@ const H1 = styled.h1`
   margin-bottom: 2em;
   @media (max-width: 768px) {
     letter-spacing: 0;
+    font-size: 40px;
+    margin-bottom: 1em;
   }
   @media (min-width: 1080px) and (max-width: 1081px) {
     font-size: 96px;
