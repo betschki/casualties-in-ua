@@ -16,7 +16,7 @@ export const exportStory = async (element: any, imageFileName: string) => {
 
 const downloadImage = (blob: string, fileName: string) => {
   const fakeLink = window.document.createElement("a");
-  fakeLink.style = "display:none;";
+  // fakeLink.style = "display:none;";
   fakeLink.download = fileName;
 
   fakeLink.href = blob;
