@@ -9,10 +9,11 @@ const Card = styled.div`
   margin: 4em auto 0 auto;
   max-width: 80%;
   @media (min-width: 1080px) and (max-width: 1080px) {
-    background: transparent;
     max-width: 100%;
-    padding: 0;
+    padding: 4.5em 4em;
     text-align: left;
+    border-radius: 24px;
+    margin-top: -6em;
   }
 `;
 
@@ -23,6 +24,7 @@ const Heading = styled.p`
     font-size: 54px;
     font-weight: 800;
     color: #2c3e50;
+    margin: 0;
   }
 `;
 
