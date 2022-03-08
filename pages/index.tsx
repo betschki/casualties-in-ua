@@ -1,37 +1,50 @@
+import moment from "moment";
+import { useRef } from "react";
 import styled from "styled-components";
 import Casualties from "../components/Casualties";
 import Container from "../components/Container";
 import { CasualtiesInterface } from "../types/Casualties.interface";
+import { exportStory } from "./api/export";
 
-const Header = styled.header`
+const Main = styled.main`
   align-items: center;
-  align-content: center;
-  background: linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.9) 0%,
-      rgba(0, 0, 0, 0.7) 100%
-    ),
-    url("/img/background.jpg");
+  background: linear-gradient(0deg, #f1c40f 50%, #2980b9 50%);
   background-size: cover;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: center;
-  text-align: center;
 `;
 
 const H1 = styled.h1`
   color: #fff;
+  margin-bottom: 2em;
   @media (max-width: 768px) {
-    margin: 1.5em 0 0;
-    font-size: 32px;
     letter-spacing: 0;
+  }
+  @media (min-width: 1080px) and (max-width: 1081px) {
+    font-size: 96px;
+    text-align: left;
   }
 `;
 
 const Yellow = styled.span`
   color: #f1c40f;
+`;
+
+const DownloadSection = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Button = styled.button`
+  height: 4em;
+  text-align: center;
+  border: none;
+  font-size: 18px;
+  background: #2c3e50;
+  color: #fff;
 `;
 
 function daysSinceInvasion(): number {
@@ -58,8 +71,6 @@ export async function getStaticProps() {
     (item: any) => item.name === "Civilians Killed since 24 Feb 2022"
   );
 
-  console.log(total);
-
   const casualties = {
     total: {
       date: total[0].date,
@@ -85,17 +96,33 @@ export async function getStaticProps() {
 }
 
 export default function Home(props: CasualtiesInterface) {
+  const exportRef = useRef<any>();
+
   return (
     <>
-      <Header>
+      <Main ref={exportRef}>
         <Container>
           <H1>
             Russia's unprovoked invasion against Ukraine is going on for{" "}
             <Yellow>{daysSinceInvasion()}</Yellow> days
           </H1>
         </Container>
-        <Casualties casualties={props.casualties} />
-      </Header>
+        <Container>
+          <Casualties casualties={props.casualties}></Casualties>
+        </Container>
+      </Main>
+      <DownloadSection>
+        <Button
+          onClick={() =>
+            exportStory(
+              exportRef.current,
+              `casualties-in-ua_${moment().format("YYYY-MM-DD")}`
+            )
+          }
+        >
+          Click to download for Instagram Story
+        </Button>
+      </DownloadSection>
     </>
   );
 }
