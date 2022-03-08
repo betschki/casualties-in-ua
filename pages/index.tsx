@@ -23,7 +23,7 @@ const H1 = styled.h1`
   @media (max-width: 768px) {
     letter-spacing: 0;
     font-size: 40px;
-    margin-bottom: 1em;
+    margin: 1em 0;
   }
   @media (min-width: 1080px) and (max-width: 1081px) {
     font-size: 96px;
