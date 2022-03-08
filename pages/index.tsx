@@ -1,3 +1,4 @@
+import moment from "moment";
 import { useRef } from "react";
 import styled from "styled-components";
 import Casualties from "../components/Casualties";
@@ -5,16 +6,10 @@ import Container from "../components/Container";
 import { CasualtiesInterface } from "../types/Casualties.interface";
 import { exportStory } from "./api/export";
 
-const Header = styled.header`
+const Main = styled.main`
   align-items: center;
   align-content: center;
-  aspect-ratio: 9/16;
-  background: linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.9) 0%,
-      rgba(0, 0, 0, 0.7) 100%
-    ),
-    url("/img/background.jpg"), #000;
+  background: linear-gradient(0deg, #f1c40f 50%, #2980b9 50%);
   background-size: cover;
   min-height: 100vh;
   display: flex;
@@ -90,7 +85,7 @@ export default function Home(props: CasualtiesInterface) {
 
   return (
     <>
-      <Header ref={exportRef}>
+      <Main ref={exportRef}>
         <Container>
           <H1>
             Russia's unprovoked invasion against Ukraine is going on for{" "}
@@ -98,8 +93,15 @@ export default function Home(props: CasualtiesInterface) {
           </H1>
         </Container>
         <Casualties casualties={props.casualties} />
-      </Header>
-      <button onClick={() => exportStory(exportRef.current, "test")}>
+      </Main>
+      <button
+        onClick={() =>
+          exportStory(
+            exportRef.current,
+            `casualties-in-ua_${moment().format("YYYY-MM-DD")}`
+          )
+        }
+      >
         Capture Image
       </button>
     </>
