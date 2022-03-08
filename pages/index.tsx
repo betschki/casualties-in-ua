@@ -14,7 +14,7 @@ const Header = styled.header`
       rgba(0, 0, 0, 0.9) 0%,
       rgba(0, 0, 0, 0.7) 100%
     ),
-    url("/img/background.jpg");
+    url("/img/background.jpg"), #000;
   background-size: cover;
   min-height: 100vh;
   display: flex;
