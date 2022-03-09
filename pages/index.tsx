@@ -93,7 +93,7 @@ export async function getStaticProps() {
 
   return {
     props: { casualties },
-    revalidate: 60 * 60 * 6,
+    revalidate: 60 * 60,
   };
 }
 
