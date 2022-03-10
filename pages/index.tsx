@@ -3,6 +3,7 @@ import { useRef } from "react";
 import styled from "styled-components";
 import Casualties from "../components/Casualties";
 import Container from "../components/Container";
+import MaidanSection from "../components/sections/Maidan";
 import { CasualtiesInterface } from "../types/Casualties.interface";
 import { exportStory } from "./api/export";
 
@@ -125,6 +126,7 @@ export default function Home(props: CasualtiesInterface) {
           Click to download for Instagram Story
         </Button>
       </DownloadSection>
+      <MaidanSection />
     </>
   );
 }
