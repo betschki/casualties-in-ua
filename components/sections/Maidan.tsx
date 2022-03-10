@@ -12,6 +12,9 @@ const Section = styled.section`
 
 const H2 = styled.h2`
   margin: 1em 0 0.25em;
+  @media (max-width: 1080px) {
+    font-size: 42px;
+  }
 `;
 
 const VideoWrapper = styled.div`
